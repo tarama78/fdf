@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/07 16:11:51 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/07 16:47:44 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -186,7 +186,13 @@ $(OBJ_DIR):
 clean:
 	$(START)
 	@printf $(RED)"-x remove .o files\n"$(NORMAL)
-	@rm -f $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR)
+	$(END)
+
+cleanlib:
+	$(START)
+	@printf $(RED)"-x remove $(NAME)\n"$(NORMAL)
+	@rm -f $(NAME)
 	$(END)
 
 fclean: clean

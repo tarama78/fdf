@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_put_px.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/07 12:01:38 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/07 15:50:29 by tnicolas         ###   ########.fr       */
+/*   Created: 2018/01/07 19:33:04 by tnicolas          #+#    #+#             */
+/*   Updated: 2018/01/07 19:33:32 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **   ____________________________________________________________
-**   | main.c                                                   |
-**   |     main(10 lines)                                       |
+**   | ft_put_px.c                                              |
+**   |     ft_put_px(14 lines)                                  |
 **   ------------------------------------------------------------
 **           __n__n__  /
 **    .------`-\00/-'/
@@ -23,41 +23,22 @@
 **     |||   |||
 */
 
-#include <mlx.h>
-#include <libft.h>
+#include <fdf.h>
 
-typedef struct s_a
+void		ft_put_px(t_a *a, int x, int y, unsigned int color)
 {
-	void		*mlx;
-	void		*win;
-	int			x;
-	int			y;
-}				t_a;
+	int		i;
+	t_rgb	rgb;
 
-int			ft_key_event(int keycode, void *param)
-{
-	t_a		*a;
-
-	a = (t_a*)param;
-	ft_printf("%d\n", keycode);
-	return (0);
-}
-
-int			main(int ac, char **av)
-{
-	t_a		a;
-
-	a.mlx = mlx_init();
-	a.win = mlx_new_window(a.mlx, 800, 800, "equanime");
-	a.x = 12;
-	a.y = 65;
-	while (++a.y < 180)
+	rgb = *(t_rgb*)&color;
+	i = x * 4 + y * a->width * 4;
+	if (x < 0 || y < 0 || i < 0 || i > a->width * 4 + a->height * a->width * 4)
 	{
-		if (a.y % 2 == 0)
-			a.x++;
-		mlx_pixel_put(a.mlx, a.win, a.x, a.y, 0x00FFFFFF);
+		ft_printf("{red}%s: %s(x = %d, y = %d) -> print out of windows{eoc}\n",
+				__FILE__, __func__, x, y);
+		return ;
 	}
-	mlx_key_hook(a.win, ft_key_event, a)
-	mlx_loop(a.mlx);
-	return (0);
+	a->img.str[i] = (char)rgb.r;
+	a->img.str[i + 1] = (char)rgb.g;
+	a->img.str[i + 2] = (char)rgb.b;
 }
