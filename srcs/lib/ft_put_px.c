@@ -32,7 +32,7 @@ void		ft_put_px(t_a *a, int x, int y, unsigned int color)
 
 	rgb = *(t_rgb*)&color;
 	i = x * 4 + y * a->width * 4;
-	if (x < 0 || y < 0 || i < 0 || i > a->width * 4 + a->height * a->width * 4)
+	if (x < 0 || y < 0 || i < 0 || i > a->height * a->width * 4)
 	{
 		ft_printf("{red}%s: %s(x = %d, y = %d) -> print out of windows{eoc}\n",
 				__FILE__, __func__, x, y);
