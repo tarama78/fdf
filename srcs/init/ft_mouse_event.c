@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_put_px.c                                        :+:      :+:    :+:   */
+/*   ft_mouse_event.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/07 19:33:04 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/08 18:47:41 by tnicolas         ###   ########.fr       */
+/*   Created: 2018/01/08 18:30:01 by tnicolas          #+#    #+#             */
+/*   Updated: 2018/01/08 19:06:24 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **   ____________________________________________________________
-**   | ft_put_px.c                                              |
-**   |     ft_put_px(14 lines)                                  |
+**   | ft_mouse_event.c                                         |
 **   ------------------------------------------------------------
 **           __n__n__  /
 **    .------`-\00/-'/
@@ -25,21 +24,19 @@
 
 #include <fdf.h>
 
-void		ft_put_px(t_a *a, int x, int y, t_ui color)
+int			ft_mouse_event(int keycode, t_a *a)
 {
-	int		i;
-	t_rgb	rgb;
-
-	rgb = *(t_rgb*)&color;
-	i = x * 4 + y * a->width * 4;
-	if (x < 0 || x >= a->width || y < 0 || y >= a->height || i < 0 ||
-			i > a->height * a->width * 4)
-	{
-//		ft_printf("{red}%s: %s(x = %d, y = %d) -> print out of windows{eoc}\n",
-//				__FILE__, __func__, x, y);
-		return ;
-	}
-	a->img.str[i] = (char)rgb.r;
-	a->img.str[i + 1] = (char)rgb.g;
-	a->img.str[i + 2] = (char)rgb.b;
+	(void)a;
+	ft_printf("{green}(mouse %d){eoc}\n", keycode);
+//	if (keycode == 4)
+//	{
+//		a->zoom += ZOOM_SPEED;
+//		ft_print_result(a);
+//	}
+//	if (keycode == 5)
+//	{
+//		a->zoom -= ZOOM_SPEED;
+//		ft_print_result(a);
+//	}
+	return (0);
 }

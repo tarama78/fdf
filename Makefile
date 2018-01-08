@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/08 17:38:33 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/08 18:34:22 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,11 @@ FILES = main.c \
 		lib/ft_set_coord.c \
 		lib/ft_put_px.c \
 		lib/ft_put_line.c \
+		lib/ft_reset_win.c \
 		lib/ft_print_win.c \
 		init/init.c \
 		init/ft_key_event.c \
+		init/ft_mouse_event.c \
 		fdf/ft_print_result.c
 
 HFILES = includes/fdf.h \
