@@ -24,8 +24,8 @@
 # define ERROR 1
 # define PI 3.14159265358979323846
 # define PARA_CTE 2
-# define ISOM_CTE1 0.9
-# define ISOM_CTE2 1.2
+# define ISOM_CTE1 1
+# define ISOM_CTE2 1
 
 typedef struct		s_img
 {
@@ -45,19 +45,43 @@ typedef struct		s_map
 
 typedef enum		e_proj
 {
-	PARA, ISOM, CONI
+	PARA, ISOM
 }					t_proj;
+
+typedef struct		s_def
+{
+	int				zoom;
+	int				start_x;
+	int				start_y;
+}					t_def;
+
+typedef struct		s_color
+{
+	int				c;
+}					t_color;
 
 typedef struct		s_a
 {
 	void			*mlx;
 	void			*win;
 	t_img			img;
+	t_def			def;
+
 	int				width;
 	int				height;
 	int				start_x;
 	int				start_y;
+
 	double			zoom;
+	double			zoom_speed;
+	int				move_speed;
+
+	double			para_cte;
+	double			isom_cte1;
+	double			isom_cte2;
+
+	t_color			color;
+
 	t_map			*map;
 	int				map_h;
 	t_proj			proj;

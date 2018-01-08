@@ -6,17 +6,18 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:35:34 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/08 19:38:36 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/09 00:16:52 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **   ____________________________________________________________
 **   | init.c                                                   |
-**   |     ft_init_a(18 lines)                                  |
+**   |     ft_init_a_2(19 lines)                                |
+**   |     ft_init_a(10 lines)                                  |
 **   |     ft_add_last(15 lines)                                |
-**   |     ft_init_file(46 lines)                               |
-**   |         MEUUUU too many lines                            |
+**   |     ft_init_file_2(18 lines)                             |
+**   |     ft_init_file(15 lines)                               |
 **   ------------------------------------------------------------
 **           __n__n__  /
 **    .------`-\00/-'/
@@ -28,18 +29,32 @@
 
 #include <fdf.h>
 
-void		ft_init_a(t_a *a)
+static void	ft_init_a_2(t_a *a)
 {
 	a->width = WIDTH;
 	a->height = HEIGHT;
 	a->start_x = START_X;
 	a->start_y = START_Y;
 	a->zoom = ZOOM;
+	a->zoom_speed = ZOOM_SPEED;
+	a->move_speed = MOVE_SPEED;
+	a->def.zoom = a->zoom;
+	a->def.start_x = a->start_x;
+	a->def.start_y = a->start_y;
+	a->para_cte = PARA_CTE;
+	a->isom_cte1 = ISOM_CTE1;
+	a->isom_cte2 = ISOM_CTE2;
 	a->img.bpp = 32;
 	a->img.sz_ln = a->width * 4;
 	a->img.endian = 0;
 	a->map = NULL;
 	a->proj = PARA;
+	a->color.c = 0x00FF00;
+}
+
+void		ft_init_a(t_a *a)
+{
+	ft_init_a_2(a);
 	if (!(a->mlx = mlx_init()))
 		ft_error();
 	if (!(a->win = mlx_new_window(a->mlx, a->width, a->height, "fdf")))
@@ -70,11 +85,31 @@ static void	ft_add_last(t_map **map, t_map *new)
 	new->next = NULL;
 }
 
+static t_map	*ft_init_file_2(char *line)
+{
+	t_map	*new_map;
+	char	**tab;
+	int		i;
+
+	tab = ft_strsplit(line, ' ');
+	i = -1;
+	while (tab[++i] != 0)
+		;
+	if (!(new_map = malloc(sizeof(t_map))))
+		ft_error();
+	if (!(new_map->m = malloc(sizeof(new_map->m) * i)))
+		ft_error();
+	new_map->w = i;
+	i = -1;
+	while (++i < new_map->w)
+		new_map->m[i] = ft_atoi(tab[i]);
+	free(tab);
+	return (new_map);
+}
+
 void		ft_init_file(t_a *a, char *file)
 {
 	char	*line;
-	char	**tab;
-	int		i;
 	int		fd;
 	t_map	*new_map;
 
@@ -83,39 +118,10 @@ void		ft_init_file(t_a *a, char *file)
 		ft_error();
 	while (get_next_line(fd, &line) == GNL_LINE_READ)
 	{
-		tab = ft_strsplit(line, ' ');
-		i = -1;
-		while (tab[++i] != 0)
-			;
-		if (!(new_map = malloc(sizeof(t_map))))
-			ft_error();
-		if (!(new_map->m = malloc(sizeof(new_map->m) * i)))
-			ft_error();
-		new_map->w = i;
-		i = -1;
-		while (++i < new_map->w)
-		{
-			new_map->m[i] = ft_atoi(tab[i]);
-		}
+		new_map = ft_init_file_2(line);
 		a->map_h++;
 		ft_add_last(&a->map, new_map);
-		ft_fruit(2, line, tab);
+		free(line);
 	}
 	close(fd);
-
-	////////////////////////////////////////////
-//	new_map = a->map;
-//	while (new_map->next)
-//	{
-//		i = -1;
-//		while (++i < new_map->w)
-//			ft_printf("%3d", new_map->m[i]);
-//		ft_printf("\n");
-//		new_map = new_map->next;
-//	}
-//	i = -1;
-//	while (++i < new_map->w)
-//		ft_printf("%3d", new_map->m[i]);
-//	ft_printf("\n");
-	///////////////////////////////////////////
 }
