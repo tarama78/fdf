@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/07 19:52:45 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/08 17:38:33 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,17 @@
 NAME = fdf
 
 FILES = main.c \
+		ft_error.c \
+		lib/ft_set_coord.c \
 		lib/ft_put_px.c \
+		lib/ft_put_line.c \
 		lib/ft_print_win.c \
 		init/init.c \
-		init/ft_key_event.c
+		init/ft_key_event.c \
+		fdf/ft_print_result.c
 
-HFILES = includes/fdf.h
+HFILES = includes/fdf.h \
+		 includes/fdf_struct.h
 
 CC = gcc
 CFLAGS = -Wall -Wextra ##################################################-Werror
@@ -73,11 +78,12 @@ all:
 	@make $(NAME)
 	$(END)
 
-$(NAME): $(OBJ_DIR) $(OBJ)
+$(NAME): $(OBJ_DIR) $(OBJ) $(LIBFT_DIR)libft.a $(LIBX_DIR)libmlx.a
 	@printf $(CYAN)"-> create program : $(NAME)\n"$(NORMAL)
 	@$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LIBFT_LIB) $(LIBX_LIB)
 
-$(OBJ_DIR)%.o: $(SRCS_DIR)%.c $(HFILES) $(OBJ_DIR)
+$(OBJ_DIR)%.o: $(SRCS_DIR)%.c $(HFILES) $(OBJ_DIR) $(LIBFT_DIR)libft.a $(LIBX_DIR)libmlx.a
+
 	@printf $(YELLOW)"-> $<\n"$(NORMAL)
 	@$(CC) -c $(INC) $< -o $@ $(CFLAGS)
 
@@ -111,14 +117,14 @@ exec:
 	@clear
 	@make all
 	@printf $(MAGENTA)"EXEC FDF\n--------------------\n"$(NORMAL)
-	@./fdf
+	@./fdf fdf_example/maps/42.fdf
 	@printf $(MAGENTA)"--------------------\n"$(NORMAL)
 
 reexec:
 	@clear
 	@make re
 	@printf $(MAGENTA)"EXEC FDF\n--------------------\n"$(NORMAL)
-	@./fdf
+	@./fdf fdf_example/maps/42.fdf
 	@printf $(MAGENTA)"--------------------\n"$(NORMAL)
 
 open:

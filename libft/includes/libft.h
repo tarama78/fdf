@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 14:15:42 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/06 16:17:23 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/08 16:11:29 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 # define LIBFT_H
 
 # include <stddef.h>
-# include <list.h>
+# include <struct.h>
 # include <wchar.h>
 
 # define BUFF_SIZE 2048
 
 # define PRINTF_ERROR -1
+
+# define GNL_END 0
+# define GNL_LINE_READ 1
+# define GNL_SUCCESS 1
+# define GNL_ERROR -1
 
 # define EOC	"\x1B[0m"
 # define RED  "\x1B[31m"
@@ -99,6 +104,7 @@ void		ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void		ft_lstadd(t_list **alst, t_list *new);
 void		ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+t_list		*ft_lstget(t_list *lst, int n);
 
 void		*ft_realloc(void *ptr, size_t original_size, size_t new_size);
 int			ft_read_fd(int fd, char **file_content);
@@ -116,6 +122,7 @@ char		*ft_strndup(const char *s1, int n);
 double		ft_power(double nb, int power);
 long long	ft_2arg(int arg1, int arg2);
 int			ft_get2arg(long long arg, int n);
+void		ft_swap_int(int *a, int *b);
 
 int			ft_printf(const char *format, ...);
 int			ft_vprintf(const char *format, va_list ap);
@@ -123,5 +130,6 @@ int			ft_dprintf(int fd, const char *format, ...);
 int			ft_vdprintf(int fd, const char *format, va_list ap);
 int			ft_asprintf(char **str, const char *format, ...);
 int			ft_vasprintf(char **ret, const char *format, va_list ap);
+int			get_next_line(const int fd, char **line);
 
 #endif

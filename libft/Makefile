@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/07 16:47:44 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/08 16:10:31 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,6 +70,7 @@ FILES = ft_strlen.c \
 		list/ft_lstadd.c \
 		list/ft_lstiter.c \
 		list/ft_lstmap.c \
+		list/ft_lstget.c \
 		bonus/ft_realloc.c \
 		bonus/ft_read_fd.c \
 		bonus/ft_read_file.c \
@@ -88,6 +89,8 @@ FILES = ft_strlen.c \
 		bonus/ft_get2arg.c \
 		bonus/ft_islower.c \
 		bonus/ft_isupper.c \
+		bonus/ft_swap_int.c \
+		bonus/get_next_line.c \
 		$(addprefix ft_printf/, $(FILES_FT_PRINTF))
 
 FILES_FT_PRINTF = printf/ft_printf.c \
@@ -137,7 +140,8 @@ FILES_FT_PRINTF = printf/ft_printf.c \
 		conv/ft_regle_de_merde.c \
 
 HFILES = includes/libft.h \
-		 includes/list.h \
+		 includes/struct.h \
+		 includes/get_next_line.h \
 		 includes/ft_printf/ft_printf.h \
 		 includes/ft_printf/ft_printf_struct.h
 

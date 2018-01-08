@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:33:04 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/07 19:33:32 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/08 16:19:23 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 #include <fdf.h>
 
-void		ft_put_px(t_a *a, int x, int y, unsigned int color)
+void		ft_put_px(t_a *a, int x, int y, t_ui color)
 {
 	int		i;
 	t_rgb	rgb;
