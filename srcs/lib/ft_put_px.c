@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:33:04 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/09 00:16:35 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/09 10:51:03 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		ft_put_px(t_a *a, int x, int y, t_ui color)
 //				__FILE__, __func__, x, y);
 		return ;
 	}
-	a->img.str[i] = (char)rgb.r;
+	a->img.str[i] = (char)rgb.b;
 	a->img.str[i + 1] = (char)rgb.g;
-	a->img.str[i + 2] = (char)rgb.b;
+	a->img.str[i + 2] = (char)rgb.r;
 }

@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:38:12 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/08 20:12:19 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/09 11:55:21 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 # define ZOOM 30
 # define ZOOM_SPEED (double)ZOOM / 10
 # define MOVE_SPEED 10
-# define START_X 100
-# define START_Y 100
+# define START_X 400
+# define START_Y 70
+# define PARA_CTE 500
+# define ISOM_CTE1 1
+# define ISOM_CTE2 1
 # define SUCCESS 0
 # define ERROR 1
 # define PI 3.14159265358979323846
-# define PARA_CTE 2
-# define ISOM_CTE1 1
-# define ISOM_CTE2 1
 
 typedef struct		s_img
 {
@@ -57,7 +57,9 @@ typedef struct		s_def
 
 typedef struct		s_color
 {
-	int				c;
+	unsigned int	c;
+	unsigned int	start;
+	unsigned int	end;
 }					t_color;
 
 typedef struct		s_a
@@ -84,6 +86,7 @@ typedef struct		s_a
 
 	t_map			*map;
 	int				map_h;
+	int				max_z;
 	t_proj			proj;
 }					t_a;
 
@@ -97,9 +100,9 @@ typedef struct		s_coord
 
 typedef struct 		s_rgb
 {
-	unsigned int	r : 8;
-	unsigned int	g : 8;
 	unsigned int	b : 8;
+	unsigned int	g : 8;
+	unsigned int	r : 8;
 	unsigned int	a : 8;
 }					t_rgb;
 

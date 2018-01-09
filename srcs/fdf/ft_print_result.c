@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 17:37:25 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/09 00:15:55 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/09 11:02:54 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,19 @@ static void	ft_print_para_2(t_a *a, t_map *map, t_map *last_map, long long xy)
 	y = ft_get2arg(xy, 1);
 	if (x > 0)
 	{
-		c = ft_set_coord( (a->start_x + x * a->zoom) + a->para_cte * -map->m[x],
+		c = ft_set_coord((a->start_x + x * a->zoom) + a->para_cte * -map->m[x],
 		(a->start_y + y * a->zoom) + a->para_cte * -map->m[x], (a->start_x + (x
 		- 1) * a->zoom) + a->para_cte * -map->m[x - 1], (a->start_y + y *
 		a->zoom) + a->para_cte * -map->m[x - 1]);
-		ft_put_line(a, c, a->color.c);
+		ft_put_line_color(a, c, map->m[x], map->m[x - 1]);
 	}
 	if (y > 0)
 	{
-		c = ft_set_coord( (a->start_x + x * a->zoom) + a->para_cte * -map->m[x],
+		c = ft_set_coord((a->start_x + x * a->zoom) + a->para_cte * -map->m[x],
 		(a->start_y + y * a->zoom) + a->para_cte * -map->m[x], (a->start_x + x *
 		a->zoom) + a->para_cte * -last_map->m[x], (a->start_y + (y - 1) *
 		a->zoom) + a->para_cte * -last_map->m[x]);
-		ft_put_line(a, c, a->color.c);
+		ft_put_line_color(a, c, map->m[x], last_map->m[x]);
 	}
 }
 
@@ -74,25 +74,25 @@ static void	ft_print_isom_2(t_a *a, t_map *map, t_map *last_map, long long xy)
 	y = ft_get2arg(xy, 1);
 	if (x > 0)
 	{
-		c = ft_set_coord( (a->start_x + x * a->zoom) * a->isom_cte1 -
+		c = ft_set_coord((a->start_x + x * a->zoom) * a->isom_cte1 -
 		(a->start_y + y * a->zoom) * a->isom_cte2, -map->m[x] + a->isom_cte1 / 2
 		* (a->start_x + x * a->zoom) + a->isom_cte2 / 2 * (a->start_y + y *
 		a->zoom), (a->start_x + (x - 1) * a->zoom) * a->isom_cte1 -
 		(a->start_y + y * a->zoom) * a->isom_cte2, -map->m[x - 1] +
 		a->isom_cte1 / 2 * (a->start_x + (x - 1) * a->zoom) + a->isom_cte2 / 2
 		* (a->start_y + y * a->zoom));
-		ft_put_line(a, c, a->color.c);
+		ft_put_line_color(a, c, map->m[x], map->m[x - 1]);
 	}
 	if (y > 0)
 	{
-		c = ft_set_coord( (a->start_x + x * a->zoom) * a->isom_cte1 -
+		c = ft_set_coord((a->start_x + x * a->zoom) * a->isom_cte1 -
 		(a->start_y + y * a->zoom) * a->isom_cte2, -map->m[x] + a->isom_cte1 / 2
 		* (a->start_x + x * a->zoom) + a->isom_cte2 / 2 * (a->start_y + y *
 		a->zoom), (a->start_x + x * a->zoom) * a->isom_cte1 - (a->start_y + (y
 		- 1) * a->zoom) * a->isom_cte2, -last_map->m[x] + a->isom_cte1 / 2 *
 		(a->start_x + x * a->zoom) + a->isom_cte2 / 2 * (a->start_y + (y - 1)
 		* a->zoom));
-		ft_put_line(a, c, a->color.c);
+		ft_put_line_color(a, c, map->m[x], last_map->m[x]);
 	}
 }
 
