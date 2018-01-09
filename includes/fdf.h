@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 16:29:15 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/09 11:02:12 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:56:21 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@
 # include <fdf_struct.h>
 
 void		ft_error();
-void		ft_init_a(t_a *a);
+void		ft_init_a(t_a *a, char **arg, int nb_arg);
 void		ft_init_file(t_a *a, char *file);
+void		ft_set_cte(t_a *a);
 
 t_coord		ft_set_coord(int x1, int y1, int x2, int y2);
+t_coord		ft_set_coord_color(long long xy1, int c1, long long xy2, int c2);
 void		ft_put_px(t_a *a, int x, int y, t_ui color);
 void		ft_put_line(t_a *a, t_coord c, t_ui color);
 void		ft_put_line_color(t_a *a, t_coord c, int z_start, int z_end);

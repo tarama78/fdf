@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_intlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/07 12:01:38 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/09 18:17:38 by tnicolas         ###   ########.fr       */
+/*   Created: 2018/01/09 15:26:11 by tnicolas          #+#    #+#             */
+/*   Updated: 2018/01/09 16:19:55 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **   ____________________________________________________________
-**   | main.c                                                   |
-**   |     main(19 lines)                                       |
+**   | ft_intlen.c                                              |
 **   ------------------------------------------------------------
 **           __n__n__  /
 **    .------`-\00/-'/
@@ -23,27 +22,14 @@
 **     |||   |||
 */
 
-#include <fdf.h>
+#include <libft.h>
 
-int			main(int ac, char **av)
+size_t		ft_intlen(int n)
 {
-	t_a		a;
+	int		i;
 
-	(void)ac;
-	(void)av;
-	if (ac >= 2)
-	{
-		ft_init_a(&a, (av + 2), ac - 2);
-		ft_init_file(&a, av[1]);
-		mlx_key_hook(a.win, ft_key_event, &a);
-		mlx_mouse_hook(a.win, ft_mouse_event, &a);
-		ft_print_result(&a);
-		mlx_loop(a.mlx);
-	}
-	else
-		ft_printf("usage: fdf map [width=%d] [height=%d] [z=%d]\n"
-				"\tmove with <up> <down> <right> <left>\n"
-				"\tzoom with + and -\n\tchange projection with <space>\n",
-				WIDTH, HEIGHT, MULT_CTE);
-	return (0);
+	i = 0;
+	while (++i && n != 0)
+		n /= 10;
+	return (i);
 }

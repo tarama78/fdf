@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 14:15:42 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/08 18:30:17 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/09 16:20:05 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,14 @@ void		ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list		*ft_lstget(t_list *lst, int n);
 
+size_t		ft_intlen(int n);
 void		*ft_realloc(void *ptr, size_t original_size, size_t new_size);
 int			ft_read_fd(int fd, char **file_content);
 int			ft_read_file(char *filename, char **file_content);
 char		*ft_int_to_base(long long n, char *base);
 char		*ft_int_to_nbase(long n, char *base, int size);
 long long	ft_base_to_int(char *n, char *base);
+int			ft_atoi_base(char *s, char *base);
 char		*ft_convert_base(char *n, char *base_in, char *base_out);
 char		*ft_ftoa(double f, int sign);
 char		*ft_ltoa(long n);

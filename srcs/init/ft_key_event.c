@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:36:50 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/09 00:20:01 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:12 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,13 @@ static void	ft_key_event_zoom(int keycode, t_a *a)
 	if (keycode == 69 || keycode == 24)
 	{
 		a->zoom += a->zoom_speed;
+		ft_set_cte(a);
 		ft_print_result(a);
 	}
 	else if (keycode == 78 || keycode == 27)
 	{
 		a->zoom -= a->zoom_speed;
+		ft_set_cte(a);
 		ft_print_result(a);
 	}
 }

@@ -6,18 +6,20 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:35:34 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/09 11:49:26 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/09 18:57:53 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **   ____________________________________________________________
 **   | init.c                                                   |
-**   |     ft_init_a_2(20 lines)                                |
+**   |     ft_init_a_2(18 lines)                                |
 **   |     ft_init_a(10 lines)                                  |
 **   |     ft_add_last(15 lines)                                |
-**   |     ft_init_file_2(22 lines)                             |
-**   |     ft_init_file(15 lines)                               |
+**   |     ft_set_color(8 lines)                                |
+**   |     ft_init_file_2(25 lines)                             |
+**   |     ft_init_file(18 lines)                               |
+**   | MEUUUU too many functions                                |
 **   ------------------------------------------------------------
 **           __n__n__  /
 **    .------`-\00/-'/
@@ -29,10 +31,12 @@
 
 #include <fdf.h>
 
-static void		ft_init_a_2(t_a *a)
+static void		ft_init_a_2(t_a *a, char **arg, int nb_arg)
 {
-	a->width = WIDTH;
-	a->height = HEIGHT;
+	a->width = (nb_arg > 0 && ft_atoi(arg[0]) != 0) ? ft_atoi(arg[0]) : WIDTH;
+	a->height = (nb_arg > 1 && ft_atoi(arg[1]) != 0) ? ft_atoi(arg[1]) : HEIGHT;
+	a->mult_cte = (nb_arg > 2 && ft_atoi(arg[2]) != 0) ? ft_atoi(arg[2]) :
+		MULT_CTE;
 	a->start_x = START_X;
 	a->start_y = START_Y;
 	a->zoom = ZOOM;
@@ -46,15 +50,12 @@ static void		ft_init_a_2(t_a *a)
 	a->img.endian = 0;
 	a->map = NULL;
 	a->proj = PARA;
-	a->color.start = 0xFF0000;
-	a->color.end = 0x00FF00;
-	a->color.c = a->color.start;
 	a->max_z = 0;
 }
 
-void			ft_init_a(t_a *a)
+void			ft_init_a(t_a *a, char **arg, int nb_arg)
 {
-	ft_init_a_2(a);
+	ft_init_a_2(a, arg, nb_arg);
 	if (!(a->mlx = mlx_init()))
 		ft_error();
 	if (!(a->win = mlx_new_window(a->mlx, a->width, a->height, "fdf")))
@@ -85,6 +86,18 @@ static void		ft_add_last(t_map **map, t_map *new)
 	new->next = NULL;
 }
 
+static int		ft_set_color(t_a *a, char *s)
+{
+	int			ret;
+
+	while (ft_isdigit(*s))
+		s++;
+	ret = ft_atoi_base(++s, "0123456789abcdef");
+	if (ret == 0)
+		ret = 0xFFFFFF;
+	return (ret);
+}
+
 static t_map	*ft_init_file_2(t_a *a, char *line)
 {
 	t_map	*new_map;
@@ -99,11 +112,14 @@ static t_map	*ft_init_file_2(t_a *a, char *line)
 		ft_error();
 	if (!(new_map->m = malloc(sizeof(new_map->m) * i)))
 		ft_error();
+	if (!(new_map->color = malloc(sizeof(new_map->color) * i)))
+		ft_error();
 	new_map->w = i;
 	i = -1;
 	while (++i < new_map->w)
 	{
 		new_map->m[i] = ft_atoi(tab[i]);
+		new_map->color[i] = ft_set_color(a, tab[i]);
 		if (new_map->m[i] > a->max_z)
 			a->max_z = new_map->m[i];
 	}
@@ -127,8 +143,6 @@ void			ft_init_file(t_a *a, char *file)
 		ft_add_last(&a->map, new_map);
 		free(line);
 	}
-	a->para_cte = PARA_CTE * 100 / pow(a->max_z, 2);
-	a->isom_cte1 = ISOM_CTE1;
-	a->isom_cte2 = ISOM_CTE2;
+	ft_set_cte(a);
 	close(fd);
 }

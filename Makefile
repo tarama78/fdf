@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/09 11:08:35 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/09 18:57:28 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ FILES = main.c \
 		lib/ft_reset_win.c \
 		lib/ft_print_win.c \
 		init/init.c \
+		init/ft_set_cte.c \
 		init/ft_key_event.c \
 		init/ft_mouse_event.c \
 		fdf/ft_print_result.c

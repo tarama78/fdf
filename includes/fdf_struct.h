@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:38:12 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/09 11:55:21 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/09 17:42:38 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
 # define MOVE_SPEED 10
 # define START_X 400
 # define START_Y 70
-# define PARA_CTE 500
-# define ISOM_CTE1 1
-# define ISOM_CTE2 1
+# define MULT_CTE 100
+# define PARA_CTE 1
+# define ISOM_CTE1 0.5
+# define ISOM_CTE2 0.5
 # define SUCCESS 0
 # define ERROR 1
 # define PI 3.14159265358979323846
@@ -39,6 +40,7 @@ typedef struct		s_img
 typedef struct		s_map
 {
 	int				*m;
+	int				*color;
 	int				w;
 	struct s_map	*next;
 }					t_map;
@@ -54,13 +56,6 @@ typedef struct		s_def
 	int				start_x;
 	int				start_y;
 }					t_def;
-
-typedef struct		s_color
-{
-	unsigned int	c;
-	unsigned int	start;
-	unsigned int	end;
-}					t_color;
 
 typedef struct		s_a
 {
@@ -81,8 +76,8 @@ typedef struct		s_a
 	double			para_cte;
 	double			isom_cte1;
 	double			isom_cte2;
+	int				mult_cte;
 
-	t_color			color;
 
 	t_map			*map;
 	int				map_h;
@@ -94,8 +89,10 @@ typedef struct		s_coord
 {
 	int				x1;
 	int				y1;
+	int				c1;
 	int				x2;
 	int				y2;
+	int				c2;
 }					t_coord;
 
 typedef struct 		s_rgb

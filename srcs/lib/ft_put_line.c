@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:16:26 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/09 11:32:58 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/09 21:18:59 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,18 @@
 
 #include <fdf.h>
 
-static t_ui	ft_get_color(t_a *a, int z)
+static int	ft_get_color(t_a *a, t_coord c, int z)
 {
-	t_rgb	c_start;
-	t_rgb	c_end;
-	t_rgb	c;
-
-	c_start = *(t_rgb*)&a->color.start;
-	c_end = *(t_rgb*)&a->color.end;
-	c = *(t_rgb*)&a->color.start;
-//	ft_printf("(z %d) (max_z %d)\n", z, a->max_z);
-	if (z == 0)
-		return (a->color.start);
-	c.r = (c_end.r - c_start.r) / ((double)a->max_z / z);
-	c.g = (c_end.g - c_start.g) / ((double)a->max_z / z);
-	c.b = (c_end.b - c_start.b) / ((double)a->max_z / z);
-	return (*(t_ui*)&c);
+//	ft_printf("%#x\n", c.c1);
+	return (c.c1);
 }
 
 void		ft_put_line_color(t_a *a, t_coord c, int z_start, int z_end)
 {
 	int		x;
 
+	ft_printf("(x1 %3d) (y1 %3d)\n", c.x1, c.y1);
+	ft_printf("(x2 %3d) (y2 %3d)\n\n", c.x2, c.y2);
 	if (abs(c.x2 - c.x1) >= abs(c.y2 - c.y1))
 	{
 		if (c.x2 - c.x1 < 0)
@@ -57,7 +47,7 @@ void		ft_put_line_color(t_a *a, t_coord c, int z_start, int z_end)
 		x = c.x1 - 1;
 		while (++x < c.x2)
 			ft_put_px(a, x, c.y1 + ((c.y2 - c.y1) * (x - c.x1) / (c.x2 - c.x1)),
-					ft_get_color(a, ((a->max_z == 0) ? 0 : (int)-(((double)x - c.x1) / ((double)c.x2 - c.x1 + 1) * ((double)z_end - z_start)))));
+					ft_get_color(a, c, z_start || z_end));
 		return ;
 	}
 	if (c.y2 - c.y1 < 0)
@@ -69,7 +59,7 @@ void		ft_put_line_color(t_a *a, t_coord c, int z_start, int z_end)
 	x = c.x1 - 1;
 	while (++x < c.x2)
 		ft_put_px(a, c.y1 + ((c.y2 - c.y1) * (x - c.x1) / (c.x2 - c.x1)), x,
-					ft_get_color(a, ((a->max_z == 0) ? 0 : (int)-(((double)x - c.x1) / ((double)c.x2 - c.x1 + 1) * ((double)z_end - z_start)))));
+					ft_get_color(a, c, z_start || z_end));
 }
 
 void		ft_put_line(t_a *a, t_coord c, t_ui color)
