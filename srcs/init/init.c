@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:35:34 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 17:30:31 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/10 17:56:34 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void		ft_init_a_2(t_a *a, char **arg, int nb_arg)
 	a->start_y = 0;
 	a->add_x = 0;
 	a->add_y = 0;
-	a->add_cte = 1;
+	a->add_cte = 1 * (double)a->mult_cte / MULT_CTE;
 	a->move_speed = MOVE_SPEED;
 	a->zoom = ZOOM;
 	a->def.zoom = a->zoom;
