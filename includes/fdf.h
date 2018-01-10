@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 16:29:15 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 15:34:55 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/10 18:34:15 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_coord		ft_set_coord(int x1, int y1, int x2, int y2);
 t_coord		ft_set_coord_color(long long xy1, int c1, long long xy2, int c2);
 void		ft_put_px(t_a *a, int x, int y, t_ui color);
 void		ft_put_line(t_a *a, t_coord c, t_ui color);
-void		ft_put_line_color(t_a *a, t_coord c, int z_start, int z_end);
+void		ft_put_line_color(t_a *a, t_coord c);
 void		ft_reset_win(t_a *a);
 void		ft_print_win(t_a *a);
 

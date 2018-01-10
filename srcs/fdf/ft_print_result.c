@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 17:37:25 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 18:11:48 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/10 18:34:43 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static void	ft_print_para(t_a *a, t_map *map, t_map *last_map, long long xy)
 		c.y2 += a->add_y;
 		c.c1 = map->color[x];
 		c.c1 = map->color[x - 1];
-		ft_put_line_color(a, c, map->m[x], map->m[x - 1]);
+		ft_put_line_color(a, c/*, map->m[x], map->m[x - 1]*/);
 	}
 	if (y > 0)
 	{
@@ -75,7 +75,7 @@ static void	ft_print_para(t_a *a, t_map *map, t_map *last_map, long long xy)
 		c.y2 += a->add_y;
 		c.c1 = last_map->color[x];
 		c.c1 = last_map->color[x];
-		ft_put_line_color(a, c, map->m[x], last_map->m[x]);
+		ft_put_line_color(a, c/*, map->m[x], last_map->m[x]*/);
 	}
 }
 
@@ -117,7 +117,7 @@ static void	ft_print_isom(t_a *a, t_map *map, t_map *last_map, long long xy)
 		c.c1 = map->color[x - 1];
 		if (x == 1 && y == 1)
 			ft_printf("%5d\t%5d\n", c.x1, c.y1);
-		ft_put_line_color(a, c, map->m[x], map->m[x - 1]);
+		ft_put_line_color(a, c/*, map->m[x], map->m[x - 1]*/);
 	}
 	if (y > 0)
 	{
@@ -132,7 +132,7 @@ static void	ft_print_isom(t_a *a, t_map *map, t_map *last_map, long long xy)
 		c.y2 += a->add_y;
 		c.c1 = last_map->color[x];
 		c.c1 = last_map->color[x];
-		ft_put_line_color(a, c, map->m[x], last_map->m[x]);
+		ft_put_line_color(a, c/*, map->m[x], last_map->m[x]*/);
 	}
 }
 

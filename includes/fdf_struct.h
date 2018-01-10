@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:38:12 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 18:11:57 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/10 19:15:44 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ typedef struct		s_a
 	double			isom_cte1;
 	double			isom_cte2;
 	int				mult_cte;
-
 
 	t_map			*map;
 	int				map_h;
