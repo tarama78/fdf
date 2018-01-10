@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:36:50 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 17:46:38 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/10 17:57:27 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int			ft_key_event(int keycode, t_a *a)
 		a->start_x = a->def.start_x;
 		a->start_y = a->def.start_y;
 		a->zoom = a->def.zoom;
-		a->add_cte = 1;
+		a->add_cte = 1 * (double)a->mult_cte / MULT_CTE;
 		a->proj = PARA;
 		ft_print_result(a);
 	}
@@ -104,7 +104,7 @@ int			ft_key_event(int keycode, t_a *a)
 		if (a->proj == PARA)
 		{
 			a->zoom = ft_max(a->height / a->map_h, a->width / a->map->w) / ((a->isom_cte1 + a->isom_cte2)) * 4.5;
-			a->add_cte = 1;
+			a->add_cte = 1 * (double)a->mult_cte / MULT_CTE;
 			ft_printf("{yellow}zoom isom %f{eoc}\n", a->zoom);
 			a->proj = ISOM;
 			ft_set_cte(a);
