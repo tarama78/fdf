@@ -6,12 +6,12 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 11:15:52 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/06 16:17:28 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/10 15:40:45 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_2_H
-# define FT_PRINTF_2_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
 # include <libft.h>

@@ -6,17 +6,18 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 17:37:25 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 15:20:50 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/10 17:48:36 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **   ____________________________________________________________
 **   | ft_print_result.c                                        |
-**   |     ft_print_para_2(22 lines)                            |
-**   |     ft_print_isom_2(28 lines)                            |
+**   |     ft_print_para(41 lines)                              |
 **   |         MEUUUU too many lines                            |
-**   |     ft_print_result(24 lines)                            |
+**   |     ft_print_isom(48 lines)                              |
+**   |         MEUUUU too many lines                            |
+**   |     ft_print_result(25 lines)                            |
 **   ------------------------------------------------------------
 **           __n__n__  /
 **    .------`-\00/-'/
@@ -50,8 +51,8 @@ static void	ft_print_para(t_a *a, t_map *map, t_map *last_map, long long xy)
 				(a->start_y + y * a->zoom) + a->para_cte * -map->m[x - 1]);
 		if (x == 1 && y == 0)
 		{
-			a->add_x = 200;
-			a->add_y = 200;
+			a->add_x = 10;
+			a->add_y = 10;
 		}
 		c.x1 += a->add_x;
 		c.y1 += a->add_y;
@@ -99,12 +100,12 @@ static void	ft_print_isom(t_a *a, t_map *map, t_map *last_map, long long xy)
 	{
 		c = ft_set_coord(
 				(a->start_x + x * zoom) * a->isom_cte1 - (a->start_y + y * zoom) * a->isom_cte2,
-				-map->m[x] * zoom + a->isom_cte1 / 2 * (a->start_x + x * zoom) + a->isom_cte2 / 2 * (a->start_y + y * zoom),
+				-map->m[x] * a->add_cte * zoom + a->isom_cte1 / 2 * (a->start_x + x * zoom) + a->isom_cte2 / 2 * (a->start_y + y * zoom),
 				(a->start_x + (x - 1) * zoom) * a->isom_cte1 - (a->start_y + y * zoom) * a->isom_cte2,
-				-map->m[x - 1] * zoom + a->isom_cte1 / 2 * (a->start_x + (x - 1) * zoom) + a->isom_cte2 / 2 * (a->start_y + y * zoom));
+				-map->m[x - 1] * a->add_cte * zoom + a->isom_cte1 / 2 * (a->start_x + (x - 1) * zoom) + a->isom_cte2 / 2 * (a->start_y + y * zoom));
 		if (x == 1 && y == 0)
 		{
-			a->add_x = -(c.x1 - (a->width / 2) - a->start_x - a->start_x);
+			a->add_x = -(c.x1 - (a->width / 2) - a->start_x);
 			a->add_y = -(c.y1 - 200 - a->start_y);
 		}
 		c.x1 += a->add_x;
@@ -122,9 +123,9 @@ static void	ft_print_isom(t_a *a, t_map *map, t_map *last_map, long long xy)
 	{
 		c = ft_set_coord(
 				(a->start_x + x * zoom) * a->isom_cte1 - (a->start_y + y * zoom) * a->isom_cte2,
-				-map->m[x] * zoom + a->isom_cte1 / 2 * (a->start_x + x * zoom) + a->isom_cte2 / 2 * (a->start_y + y * zoom),
+				-map->m[x] * a->add_cte * zoom + a->isom_cte1 / 2 * (a->start_x + x * zoom) + a->isom_cte2 / 2 * (a->start_y + y * zoom),
 				(a->start_x + x * zoom) * a->isom_cte1 - (a->start_y + (y - 1) * zoom) * a->isom_cte2,
-				-last_map->m[x] * zoom + a->isom_cte1 / 2 * (a->start_x + x * zoom) + a->isom_cte2 / 2 * (a->start_y + (y - 1) * zoom));
+				-last_map->m[x] * a->add_cte * zoom + a->isom_cte1 / 2 * (a->start_x + x * zoom) + a->isom_cte2 / 2 * (a->start_y + (y - 1) * zoom));
 		c.x1 += a->add_x;
 		c.y1 += a->add_y;
 		c.x2 += a->add_x;

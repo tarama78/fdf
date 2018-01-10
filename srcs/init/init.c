@@ -6,19 +6,19 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:35:34 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 14:28:34 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/10 17:30:31 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **   ____________________________________________________________
 **   | init.c                                                   |
-**   |     ft_init_a_2(18 lines)                                |
+**   |     ft_init_a_2(19 lines)                                |
 **   |     ft_init_a(10 lines)                                  |
 **   |     ft_add_last(15 lines)                                |
 **   |     ft_set_color(8 lines)                                |
 **   |     ft_init_file_2(25 lines)                             |
-**   |     ft_init_file(18 lines)                               |
+**   |     ft_init_file(17 lines)                               |
 **   | MEUUUU too many functions                                |
 **   ------------------------------------------------------------
 **           __n__n__  /
@@ -41,6 +41,7 @@ static void		ft_init_a_2(t_a *a, char **arg, int nb_arg)
 	a->start_y = 0;
 	a->add_x = 0;
 	a->add_y = 0;
+	a->add_cte = 1;
 	a->move_speed = MOVE_SPEED;
 	a->zoom = ZOOM;
 	a->def.zoom = a->zoom;
@@ -91,7 +92,8 @@ static int		ft_set_color(t_a *a, char *s)
 {
 	int			ret;
 
-	while (ft_isdigit(*s))
+	(void)a;
+	while (ft_isdigit(*s) || *s == '-')
 		s++;
 	ret = ft_atoi_base(++s, "0123456789abcdef");
 	if (ret == 0)
