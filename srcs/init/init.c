@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:35:34 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/09 18:57:53 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/10 14:28:34 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,12 @@ static void		ft_init_a_2(t_a *a, char **arg, int nb_arg)
 	a->height = (nb_arg > 1 && ft_atoi(arg[1]) != 0) ? ft_atoi(arg[1]) : HEIGHT;
 	a->mult_cte = (nb_arg > 2 && ft_atoi(arg[2]) != 0) ? ft_atoi(arg[2]) :
 		MULT_CTE;
-	a->start_x = START_X;
-	a->start_y = START_Y;
-	a->zoom = ZOOM;
-	a->zoom_speed = ZOOM_SPEED;
+	a->start_x = 0;
+	a->start_y = 0;
+	a->add_x = 0;
+	a->add_y = 0;
 	a->move_speed = MOVE_SPEED;
+	a->zoom = ZOOM;
 	a->def.zoom = a->zoom;
 	a->def.start_x = a->start_x;
 	a->def.start_y = a->start_y;
@@ -143,6 +144,7 @@ void			ft_init_file(t_a *a, char *file)
 		ft_add_last(&a->map, new_map);
 		free(line);
 	}
+	ft_printf("zoom speed %f\n", a->zoom_speed);
 	ft_set_cte(a);
 	close(fd);
 }

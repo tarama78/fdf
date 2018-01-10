@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:36:50 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:12 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/10 15:13:43 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,14 @@ static void	ft_key_event_zoom(int keycode, t_a *a)
 	{
 		a->zoom += a->zoom_speed;
 		ft_set_cte(a);
+		ft_printf("zoom %f\n", a->zoom);
 		ft_print_result(a);
 	}
 	else if (keycode == 78 || keycode == 27)
 	{
 		a->zoom -= a->zoom_speed;
 		ft_set_cte(a);
+		ft_printf("zoom %f\n", a->zoom);
 		ft_print_result(a);
 	}
 }
@@ -70,6 +72,7 @@ static void	ft_key_event_zoom(int keycode, t_a *a)
 int			ft_key_event(int keycode, t_a *a)
 {
 	ft_printf("{green}(key %d){eoc}\n", keycode);
+	ft_printf("isom cte %3f\tpara cte %f\n", a->isom_cte1, a->para_cte);
 	ft_key_event_move(keycode, a);
 	ft_key_event_zoom(keycode, a);
 	if (keycode == 82 || keycode == 29)
@@ -83,9 +86,15 @@ int			ft_key_event(int keycode, t_a *a)
 	else if (keycode == 49)
 	{
 		if (a->proj == PARA)
+		{
+			a->zoom = ft_max(a->height / a->map_h, a->width / a->map->w) / ((a->isom_cte1 + a->isom_cte2)) * 4.5;
+			ft_printf("{yellow}zoom isom %f{eoc}\n", a->zoom);
 			a->proj = ISOM;
+		}
 		else
+		{
 			a->proj = PARA;
+		}
 		ft_print_result(a);
 	}
 	else if (keycode == 53)

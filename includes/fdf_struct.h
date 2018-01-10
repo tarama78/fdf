@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:38:12 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/09 17:42:38 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/10 14:28:19 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,8 @@
 # define WIDTH 1200
 # define HEIGHT 800
 # define ZOOM 30
-# define ZOOM_SPEED (double)ZOOM / 10
+# define ZOOM_SPEED ZOOM
 # define MOVE_SPEED 10
-# define START_X 400
-# define START_Y 70
 # define MULT_CTE 100
 # define PARA_CTE 1
 # define ISOM_CTE1 0.5
@@ -68,6 +66,8 @@ typedef struct		s_a
 	int				height;
 	int				start_x;
 	int				start_y;
+	int				add_x;
+	int				add_y;
 
 	double			zoom;
 	double			zoom_speed;

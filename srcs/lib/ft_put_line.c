@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:16:26 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/09 21:18:59 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/10 10:42:25 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void		ft_put_line_color(t_a *a, t_coord c, int z_start, int z_end)
 {
 	int		x;
 
-	ft_printf("(x1 %3d) (y1 %3d)\n", c.x1, c.y1);
-	ft_printf("(x2 %3d) (y2 %3d)\n\n", c.x2, c.y2);
+//	ft_printf("(x1 %3d) (y1 %3d)\n", c.x1, c.y1);
+//	ft_printf("(x2 %3d) (y2 %3d)\n\n", c.x2, c.y2);
 	if (abs(c.x2 - c.x1) >= abs(c.y2 - c.y1))
 	{
 		if (c.x2 - c.x1 < 0)

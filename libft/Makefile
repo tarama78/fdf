@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/09 15:26:06 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/10 14:49:12 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,8 @@ FILES = ft_strlen.c \
 		list/ft_lstmap.c \
 		list/ft_lstget.c \
 		bonus/ft_intlen.c \
+		bonus/ft_max.c \
+		bonus/ft_min.c \
 		bonus/ft_realloc.c \
 		bonus/ft_read_fd.c \
 		bonus/ft_read_file.c \

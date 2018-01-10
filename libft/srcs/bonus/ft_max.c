@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_set_cte.c                                       :+:      :+:    :+:   */
+/*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/09 18:55:44 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 11:37:46 by tnicolas         ###   ########.fr       */
+/*   Created: 2018/01/10 14:49:27 by tnicolas          #+#    #+#             */
+/*   Updated: 2018/01/10 14:50:35 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **   ____________________________________________________________
-**   | ft_set_cte.c                                             |
+**   | ft_max.c                                                 |
+**   |     ft_max(1 lines)                                      |
 **   ------------------------------------------------------------
 **           __n__n__  /
 **    .------`-\00/-'/
@@ -22,12 +23,9 @@
 **     |||   |||
 */
 
-#include <fdf.h>
+#include <libft.h>
 
-void		ft_set_cte(t_a *a)
+int			ft_max(int a, int b)
 {
-	a->zoom_speed = ZOOM_SPEED / (double)a->map_h * (double)a->zoom / 30;
-	a->para_cte = (PARA_CTE / pow(a->max_z, 2) * a->zoom) * a->mult_cte;
-	a->isom_cte1 = (ISOM_CTE1 / a->max_z * 3) * a->mult_cte;
-	a->isom_cte2 = (ISOM_CTE2 / a->max_z * 3) * a->mult_cte;
+	return ((a > b) ? a : b);
 }

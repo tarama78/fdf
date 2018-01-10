@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 12:01:38 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/09 18:17:38 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/10 10:57:11 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int			main(int ac, char **av)
 	{
 		ft_init_a(&a, (av + 2), ac - 2);
 		ft_init_file(&a, av[1]);
-		mlx_key_hook(a.win, ft_key_event, &a);
+		mlx_hook(a.win, 2, 0, ft_key_event, &a);
+//		mlx_key_hook(a.win, ft_key_event, &a);
 		mlx_mouse_hook(a.win, ft_mouse_event, &a);
 		ft_print_result(&a);
 		mlx_loop(a.mlx);
