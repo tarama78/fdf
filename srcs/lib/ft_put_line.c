@@ -6,13 +6,16 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:16:26 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 10:42:25 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/10 15:38:01 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **   ____________________________________________________________
 **   | ft_put_line.c                                            |
+**   |     ft_get_color(2 lines)                                |
+**   |     ft_put_line_color(27 lines)                          |
+**   |         MEUUUU too many lines                            |
 **   |     ft_put_line(25 lines)                                |
 **   ------------------------------------------------------------
 **           __n__n__  /
@@ -27,6 +30,9 @@
 
 static int	ft_get_color(t_a *a, t_coord c, int z)
 {
+	(void)a;
+	(void)c;
+	(void)z;
 //	ft_printf("%#x\n", c.c1);
 	return (c.c1);
 }

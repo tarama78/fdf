@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/10 14:49:12 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/10 15:40:17 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -145,7 +145,6 @@ FILES_FT_PRINTF = printf/ft_printf.c \
 
 HFILES = includes/libft.h \
 		 includes/struct.h \
-		 includes/get_next_line.h \
 		 includes/ft_printf/ft_printf.h \
 		 includes/ft_printf/ft_printf_struct.h
 
