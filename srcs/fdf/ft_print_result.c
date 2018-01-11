@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 17:37:25 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/11 16:25:30 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:17:53 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ static void	ft_print_para(t_a *a, t_map *map, t_map *last_map, long long xy)
 				(a->start_y + y * a->zoom) + a->para_cte * -map->m[x - 1]);
 		if (x == 1 && y == 0)
 		{
-			a->add_x = 50;
-			a->add_y = 50;
+			a->add_x = MAX_Z * 2;
+			a->add_y = a->add_x;
 		}
 		c.x1 += a->add_x;
 		c.y1 += a->add_y;
@@ -60,6 +60,7 @@ static void	ft_print_para(t_a *a, t_map *map, t_map *last_map, long long xy)
 		c.y2 += a->add_y;
 		c.c1 = map->color[x - 1];
 		c.c2 = map->color[x];
+//		ft_printf("%8d %8d %3d || %8d %8d %3d || cte %f\n", c.x1, c.y1, map->m[x], c.x2, c.y2, map->m[x - 1], a->para_cte);
 		ft_put_line_color(a, c);
 	}
 	if (y > 0)

@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:20:33 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/11 16:10:35 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:02:40 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,23 @@ static t_map	*ft_init_file_2(t_a *a, char *line)
 	return (new_map);
 }
 
+static void		ft_set_max_z(t_a *a)
+{
+	t_map	*map;
+	int		x;
+	int		y;
+
+	map = a->map;
+	y = -1;
+	while (++y < a->map_h)
+	{
+		x = -1;
+		while (++x < map->w)
+			map->m[x] = floor(map->m[x] * MAX_Z / (double)a->max_z);
+		map = map->next;
+	}
+}
+
 void			ft_init_file(t_a *a, char *file)
 {
 	char	*line;
@@ -113,6 +130,7 @@ void			ft_init_file(t_a *a, char *file)
 	if (ret_gnl == GNL_ERROR)
 		ft_error(__FILE__, (char*)__func__, __LINE__, NULL);
 	ft_check_error(a);
+	ft_set_max_z(a);
 	ft_set_cte(a);
 	close(fd);
 }
