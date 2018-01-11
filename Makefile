@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/10 15:35:04 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/11 16:10:36 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,16 +25,18 @@
 NAME = fdf
 
 FILES = main.c \
-		ft_error.c \
 		lib/ft_set_coord.c \
 		lib/ft_put_px.c \
 		lib/ft_put_line.c \
 		lib/ft_reset_win.c \
 		lib/ft_print_win.c \
-		init/init.c \
+		init/ft_init_a.c \
+		init/ft_check_error.c \
+		init/ft_init_file.c \
 		init/ft_set_cte.c \
-		init/ft_key_event.c \
-		init/ft_mouse_event.c \
+		fdf/ft_key_event.c \
+		fdf/ft_mouse_event.c \
+		fdf/ft_error.c \
 		fdf/ft_print_result.c
 
 HFILES = includes/fdf.h \

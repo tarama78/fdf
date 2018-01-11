@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 16:29:15 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 18:34:15 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/11 16:10:36 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@
 # include <fcntl.h>
 # include <fdf_struct.h>
 
-void		ft_error();
+void		ft_error(char *file, char *func, int line, char *msg);
 void		ft_init_a(t_a *a, char **arg, int nb_arg);
+void		ft_check_error(t_a *a);
+void		ft_check_error_line(char *line);
 void		ft_init_file(t_a *a, char *file);
 void		ft_set_cte(t_a *a);
 

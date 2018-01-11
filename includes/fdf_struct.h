@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:38:12 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 19:15:44 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/11 16:19:18 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # define HEIGHT 800
 # define ZOOM 30
 # define ZOOM_SPEED 30
+# define MULT_ZOOM_PARA 0.9
+# define MULT_ZOOM_ISOM 0.9
 # define MOVE_SPEED 10
 # define CTE_SPEED 0.01
 # define MULT_CTE 100
