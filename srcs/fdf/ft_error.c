@@ -6,14 +6,14 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:33:26 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 15:34:54 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/11 16:10:36 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **   ____________________________________________________________
 **   | ft_error.c                                               |
-**   |     ft_error(2 lines)                                    |
+**   |     ft_error(7 lines)                                    |
 **   ------------------------------------------------------------
 **           __n__n__  /
 **    .------`-\00/-'/
@@ -25,8 +25,13 @@
 
 #include <fdf.h>
 
-void		ft_error()
+void		ft_error(char *file, char *func, int line, char *msg)
 {
-	perror(NULL);
+	ft_printf("{red}ERROR:\n\t{yellow}%s: %s(line %d){eoc}\n\t",
+			file, func, line);
+	if (msg == NULL)
+		perror(NULL);
+	else
+		ft_printf("%s\n", msg);
 	exit(EXIT_FAILURE);
 }

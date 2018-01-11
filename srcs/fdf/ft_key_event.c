@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:36:50 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 17:57:27 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/11 16:18:20 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 **   ____________________________________________________________
 **   | ft_key_event.c                                           |
 **   |     ft_key_event_move(20 lines)                          |
-**   |     ft_key_event_zoom(14 lines)                          |
-**   |     ft_key_event(29 lines)                               |
+**   |     ft_key_event_zoom(26 lines)                          |
+**   |         MEUUUU too many lines                            |
+**   |     ft_key_event(38 lines)                               |
 **   |         MEUUUU too many lines                            |
 **   ------------------------------------------------------------
 **           __n__n__  /
@@ -58,7 +59,6 @@ static void	ft_key_event_zoom(int keycode, t_a *a)
 	{
 		a->zoom += a->zoom_speed;
 		ft_set_cte(a);
-		ft_printf("zoom %f\n", a->zoom);
 		ft_print_result(a);
 	}
 	else if (keycode == 0)
@@ -77,15 +77,12 @@ static void	ft_key_event_zoom(int keycode, t_a *a)
 	{
 		a->zoom -= a->zoom_speed;
 		ft_set_cte(a);
-		ft_printf("zoom %f\n", a->zoom);
 		ft_print_result(a);
 	}
 }
 
 int			ft_key_event(int keycode, t_a *a)
 {
-	ft_printf("{green}(key %d){eoc}\n", keycode);
-	ft_printf("isom cte %3f\tpara cte %f\n", a->isom_cte1, a->para_cte);
 	ft_key_event_move(keycode, a);
 	ft_key_event_zoom(keycode, a);
 	if (keycode == 82 || keycode == 29)
@@ -94,7 +91,7 @@ int			ft_key_event(int keycode, t_a *a)
 		a->start_y = a->def.start_y;
 		a->zoom = a->def.zoom;
 		a->add_cte = 1 * (double)a->mult_cte / MULT_CTE;
-		a->proj = PARA;
+		a->proj = ISOM;
 		ft_print_result(a);
 	}
 	else if (keycode == 49)
@@ -103,17 +100,15 @@ int			ft_key_event(int keycode, t_a *a)
 		a->start_y = a->def.start_y;
 		if (a->proj == PARA)
 		{
-			a->zoom = ft_max(a->height / a->map_h, a->width / a->map->w) / ((a->isom_cte1 + a->isom_cte2)) * 4.5;
+			a->zoom = ft_max(a->height / a->map_h, a->width / a->map->w) / ((a->isom_cte1 + a->isom_cte2)) * MULT_ZOOM_ISOM;
 			a->add_cte = 1 * (double)a->mult_cte / MULT_CTE;
-			ft_printf("{yellow}zoom isom %f{eoc}\n", a->zoom);
 			a->proj = ISOM;
 			ft_set_cte(a);
 		}
 		else
 		{
-			a->zoom = (ft_min(a->height / a->map_h, a->width / a->map->w)) * 1.5;
+			a->zoom = (ft_min(a->height / a->map_h, a->width / a->map->w)) * MULT_ZOOM_PARA;
 			a->add_cte = 1;
-			ft_printf("{yellow}zoom para %f{eoc}\n", a->zoom);
 			a->proj = PARA;
 			ft_set_cte(a);
 		}

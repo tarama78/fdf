@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 17:37:25 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 18:11:48 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/11 17:17:53 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,17 @@ static void	ft_print_para(t_a *a, t_map *map, t_map *last_map, long long xy)
 				(a->start_y + y * a->zoom) + a->para_cte * -map->m[x - 1]);
 		if (x == 1 && y == 0)
 		{
-			a->add_x = 10;
-			a->add_y = 10;
+			a->add_x = MAX_Z * 2;
+			a->add_y = a->add_x;
 		}
 		c.x1 += a->add_x;
 		c.y1 += a->add_y;
 		c.x2 += a->add_x;
 		c.y2 += a->add_y;
-		c.c1 = map->color[x];
 		c.c1 = map->color[x - 1];
-		ft_put_line_color(a, c, map->m[x], map->m[x - 1]);
+		c.c2 = map->color[x];
+//		ft_printf("%8d %8d %3d || %8d %8d %3d || cte %f\n", c.x1, c.y1, map->m[x], c.x2, c.y2, map->m[x - 1], a->para_cte);
+		ft_put_line_color(a, c);
 	}
 	if (y > 0)
 	{
@@ -74,8 +75,8 @@ static void	ft_print_para(t_a *a, t_map *map, t_map *last_map, long long xy)
 		c.x2 += a->add_x;
 		c.y2 += a->add_y;
 		c.c1 = last_map->color[x];
-		c.c1 = last_map->color[x];
-		ft_put_line_color(a, c, map->m[x], last_map->m[x]);
+		c.c2 = map->color[x];
+		ft_put_line_color(a, c);
 	}
 }
 
@@ -91,9 +92,7 @@ static void	ft_print_isom(t_a *a, t_map *map, t_map *last_map, long long xy)
 	int			y;
 	double		zoom;
 
-	zoom = a->zoom * 0.2;
-//	x = map->w - ft_get2arg(xy, 0) - 1;
-//	ft_printf("map->w %d, x %d\n", map->w, x);
+	zoom = a->zoom;
 	x = ft_get2arg(xy, 0);
 	y = ft_get2arg(xy, 1);
 	if (x > 0)
@@ -112,12 +111,9 @@ static void	ft_print_isom(t_a *a, t_map *map, t_map *last_map, long long xy)
 		c.y1 += a->add_y;
 		c.x2 += a->add_x;
 		c.y2 += a->add_y;
-//		ft_printf("start (x %-5d) (y %-5d) (add_x %-5d) (add_y %-5d)\n", c.x1, c.y2, a->add_x, a->add_y);
-		c.c1 = map->color[x];
 		c.c1 = map->color[x - 1];
-		if (x == 1 && y == 1)
-			ft_printf("%5d\t%5d\n", c.x1, c.y1);
-		ft_put_line_color(a, c, map->m[x], map->m[x - 1]);
+		c.c2 = map->color[x];
+		ft_put_line_color(a, c);
 	}
 	if (y > 0)
 	{
@@ -131,8 +127,8 @@ static void	ft_print_isom(t_a *a, t_map *map, t_map *last_map, long long xy)
 		c.x2 += a->add_x;
 		c.y2 += a->add_y;
 		c.c1 = last_map->color[x];
-		c.c1 = last_map->color[x];
-		ft_put_line_color(a, c, map->m[x], last_map->m[x]);
+		c.c2 = map->color[x];
+		ft_put_line_color(a, c);
 	}
 }
 
@@ -156,9 +152,7 @@ void		ft_print_result(t_a *a)
 				ft_print_para(a, map, last_map, ft_2arg(x, y));
 			else
 				ft_print_isom(a, map, last_map, ft_2arg(x, y));
-//			ft_printf("[%2d %2d %2d] ", x, y, map->m[x]);
 		}
-//		ft_printf("\n");
 		last_map = map;
 		map = map->next;
 	}

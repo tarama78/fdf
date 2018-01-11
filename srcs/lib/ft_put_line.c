@@ -6,15 +6,15 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:16:26 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 15:38:01 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/11 16:10:35 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **   ____________________________________________________________
 **   | ft_put_line.c                                            |
-**   |     ft_get_color(2 lines)                                |
-**   |     ft_put_line_color(27 lines)                          |
+**   |     ft_get_color(15 lines)                               |
+**   |     ft_put_line_color(30 lines)                          |
 **   |         MEUUUU too many lines                            |
 **   |     ft_put_line(25 lines)                                |
 **   ------------------------------------------------------------
@@ -28,16 +28,26 @@
 
 #include <fdf.h>
 
-static int	ft_get_color(t_a *a, t_coord c, int z)
+static int	ft_get_color(t_a *a, t_coord c, int x)
 {
+	t_rgb	color;
+	t_rgb	color_s;
+	t_rgb	color_e;
+
 	(void)a;
-	(void)c;
-	(void)z;
-//	ft_printf("%#x\n", c.c1);
-	return (c.c1);
+	color_s = *(t_rgb*)&c.c1;
+	color_e = *(t_rgb*)&c.c2;
+	c.x2 = (c.x2 - (double)c.x1 == 0) ? c.x2++ : c.x2;
+	color.r = (int)(color_e.r + floor((double)(color_s.r - color_e.r) /
+				(double)(c.x2 - c.x1) * (x - c.x1)));
+	color.g = (int)(color_e.g + floor((double)(color_s.g - color_e.g) /
+				(double)(c.x2 - c.x1) * (x - c.x1)));
+	color.b = (int)(color_e.b + floor((double)(color_s.b - color_e.b) /
+				(double)(c.x2 - c.x1) * (x - c.x1)));
+	return (*(int*)&color);
 }
 
-void		ft_put_line_color(t_a *a, t_coord c, int z_start, int z_end)
+void		ft_put_line_color(t_a *a, t_coord c)
 {
 	int		x;
 
@@ -49,23 +59,26 @@ void		ft_put_line_color(t_a *a, t_coord c, int z_start, int z_end)
 		{
 			ft_swap_int(&c.x1, &c.x2);
 			ft_swap_int(&c.y1, &c.y2);
+			ft_swap_int(&c.c1, &c.c2);
 		}
 		x = c.x1 - 1;
 		while (++x < c.x2)
 			ft_put_px(a, x, c.y1 + ((c.y2 - c.y1) * (x - c.x1) / (c.x2 - c.x1)),
-					ft_get_color(a, c, z_start || z_end));
+					ft_get_color(a, c, x));
 		return ;
 	}
 	if (c.y2 - c.y1 < 0)
+	{
 		ft_swap_int(&c.x1, &c.x2);
-	if (c.y2 - c.y1 < 0)
 		ft_swap_int(&c.y1, &c.y2);
+		ft_swap_int(&c.c1, &c.c2);
+	}
 	ft_swap_int(&c.x1, &c.y1);
 	ft_swap_int(&c.x2, &c.y2);
 	x = c.x1 - 1;
 	while (++x < c.x2)
 		ft_put_px(a, c.y1 + ((c.y2 - c.y1) * (x - c.x1) / (c.x2 - c.x1)), x,
-					ft_get_color(a, c, z_start || z_end));
+					ft_get_color(a, c, x));
 }
 
 void		ft_put_line(t_a *a, t_coord c, t_ui color)

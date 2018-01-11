@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 18:30:01 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/10 15:34:55 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/11 16:12:05 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,6 @@
 int			ft_mouse_event(int keycode, t_a *a)
 {
 	(void)a;
-	ft_printf("{green}(mouse %d){eoc}\n", keycode);
-//	if (keycode == 4)
-//	{
-//		a->zoom += a->zoom_speed;
-//		ft_print_result(a);
-//	}
-//	else if (keycode == 5)
-//	{
-//		a->zoom -= a->zoom_speed;
-//		ft_print_result(a);
-//	}
+	(void)keycode;
 	return (0);
 }
