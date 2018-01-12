@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:20:33 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/11 17:02:40 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/12 11:00:53 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 **   | ft_init_file.c                                           |
 **   |     ft_add_last(15 lines)                                |
 **   |     ft_set_color(9 lines)                                |
-**   |     ft_init_file_2(25 lines)                             |
-**   |     ft_init_file(24 lines)                               |
+**   |     ft_init_file_2(26 lines)                             |
+**   |         MEUUUU too many lines                            |
+**   |     ft_set_max_z(13 lines)                               |
+**   |     ft_init_file(25 lines)                               |
 **   ------------------------------------------------------------
 **           __n__n__  /
 **    .------`-\00/-'/
@@ -121,17 +123,17 @@ void			ft_init_file(t_a *a, char *file)
 	{
 		ft_check_error_line(line);
 		new_map = ft_init_file_2(a, line);
-//		a->map_h++;
-//		if (a->map != NULL && a->map->w != new_map->w)
-//			ft_error(__FILE__, (char*)__func__, __LINE__,
-//					"Map is not rectangle");
-//		ft_add_last(&a->map, new_map);
+		a->map_h++;
+		if (a->map != NULL && a->map->w != new_map->w)
+			ft_error(__FILE__, (char*)__func__, __LINE__,
+					"Map is not rectangle");
+		ft_add_last(&a->map, new_map);
 		free(line);
 	}
 	if (ret_gnl == GNL_ERROR)
 		ft_error(__FILE__, (char*)__func__, __LINE__, NULL);
-//	ft_check_error(a);
-//	ft_set_max_z(a);
-//	ft_set_cte(a);
+	ft_check_error(a);
+	ft_set_max_z(a);
+	ft_set_cte(a);
 	close(fd);
 }

@@ -123,14 +123,14 @@ exec:
 	@clear
 	@make all
 	@printf $(MAGENTA)"EXEC FDF\n--------------------\n"$(NORMAL)
-	@./fdf fdf_example/maps/42.fdf
+	@./fdf maps/42.fdf
 	@printf $(MAGENTA)"--------------------\n"$(NORMAL)
 
 reexec:
 	@clear
 	@make re
 	@printf $(MAGENTA)"EXEC FDF\n--------------------\n"$(NORMAL)
-	@./fdf fdf_example/maps/42.fdf
+	@./fdf maps/42.fdf
 	@printf $(MAGENTA)"--------------------\n"$(NORMAL)
 
 open:
