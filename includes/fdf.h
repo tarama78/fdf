@@ -37,6 +37,7 @@ void		ft_put_line_color(t_a *a, t_coord c);
 void		ft_reset_win(t_a *a);
 void		ft_print_win(t_a *a);
 
+void		ft_close(t_a *a);
 int			ft_key_event(int keycode, t_a *a);
 int			ft_mouse_event(int keycode, t_a *a);
 void		ft_print_result(t_a *a);

@@ -115,6 +115,9 @@ int			ft_key_event(int keycode, t_a *a)
 		ft_print_result(a);
 	}
 	else if (keycode == 53)
+	{
+		ft_close(a);
 		exit(EXIT_SUCCESS);
+	}
 	return (0);
 }

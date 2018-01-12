@@ -82,6 +82,7 @@ static t_map	*ft_init_file_2(t_a *a, char *line)
 	{
 		new_map->m[i] = ft_atoi(tab[i]);
 		new_map->color[i] = ft_set_color(a, tab[i]);
+		free(tab[i]);
 		if (new_map->m[i] > a->max_z)
 			a->max_z = new_map->m[i];
 	}
@@ -120,17 +121,17 @@ void			ft_init_file(t_a *a, char *file)
 	{
 		ft_check_error_line(line);
 		new_map = ft_init_file_2(a, line);
-		a->map_h++;
-		if (a->map != NULL && a->map->w != new_map->w)
-			ft_error(__FILE__, (char*)__func__, __LINE__,
-					"Map is not rectangle");
-		ft_add_last(&a->map, new_map);
+//		a->map_h++;
+//		if (a->map != NULL && a->map->w != new_map->w)
+//			ft_error(__FILE__, (char*)__func__, __LINE__,
+//					"Map is not rectangle");
+//		ft_add_last(&a->map, new_map);
 		free(line);
 	}
 	if (ret_gnl == GNL_ERROR)
 		ft_error(__FILE__, (char*)__func__, __LINE__, NULL);
-	ft_check_error(a);
-	ft_set_max_z(a);
-	ft_set_cte(a);
+//	ft_check_error(a);
+//	ft_set_max_z(a);
+//	ft_set_cte(a);
 	close(fd);
 }
