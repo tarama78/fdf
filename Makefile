@@ -37,13 +37,14 @@ FILES = main.c \
 		fdf/ft_key_event.c \
 		fdf/ft_mouse_event.c \
 		fdf/ft_error.c \
+		fdf/ft_close.c \
 		fdf/ft_print_result.c
 
 HFILES = includes/fdf.h \
 		 includes/fdf_struct.h
 
 CC = gcc
-CFLAGS = -Wall -Wextra ##################################################-Werror
+CFLAGS = -Wall -Wextra -g ###############################################-Werror
 
 INC_DIR = includes/ \
 		  $(LIBFT_DIR)includes/ \
@@ -122,14 +123,14 @@ exec:
 	@clear
 	@make all
 	@printf $(MAGENTA)"EXEC FDF\n--------------------\n"$(NORMAL)
-	@./fdf fdf_example/maps/42.fdf
+	@./fdf maps/42.fdf
 	@printf $(MAGENTA)"--------------------\n"$(NORMAL)
 
 reexec:
 	@clear
 	@make re
 	@printf $(MAGENTA)"EXEC FDF\n--------------------\n"$(NORMAL)
-	@./fdf fdf_example/maps/42.fdf
+	@./fdf maps/42.fdf
 	@printf $(MAGENTA)"--------------------\n"$(NORMAL)
 
 open:

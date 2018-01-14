@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_win.c                                     :+:      :+:    :+:   */
+/*   ft_close.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/01/07 19:33:49 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/11 22:12:34 by tnicolas         ###   ########.fr       */
+/*   Created: 2018/01/12 10:11:38 by tnicolas          #+#    #+#             */
+/*   Updated: 2018/01/12 10:11:38 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **   ____________________________________________________________
-**   | ft_print_win.c                                           |
-**   |     ft_print_win(1 lines)                                |
+**   | ft_close.c                                               |
 **   ------------------------------------------------------------
 **           __n__n__  /
 **    .------`-\00/-'/
@@ -25,7 +24,32 @@
 
 #include <fdf.h>
 
-void		ft_print_win(t_a *a)
+void		ft_del_map(t_a *a)
 {
-	mlx_put_image_to_window(a->mlx, a->win, a->img.img, 0, 0);
+	t_map	*list;
+	t_map	*free_list;
+
+	if (a->map != NULL)
+	{
+		list = a->map;
+		while (list->next)
+		{
+			free(list->m);
+			free(list->color);
+			free_list = list;
+			list = list->next;
+			free(free_list);
+			free_list = NULL;
+		}
+		free(list->m);
+		free(list->color);
+		free(list);
+		list = NULL;
+		a->map = NULL;
+	}
+}
+void		ft_close(t_a *a)
+{
+	mlx_destroy_image(a->mlx, a->img.img);
+	ft_del_map(a);
 }
