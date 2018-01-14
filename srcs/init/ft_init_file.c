@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:20:33 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/11 17:02:40 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/12 11:00:53 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 **   | ft_init_file.c                                           |
 **   |     ft_add_last(15 lines)                                |
 **   |     ft_set_color(9 lines)                                |
-**   |     ft_init_file_2(25 lines)                             |
-**   |     ft_init_file(24 lines)                               |
+**   |     ft_init_file_2(26 lines)                             |
+**   |         MEUUUU too many lines                            |
+**   |     ft_set_max_z(13 lines)                               |
+**   |     ft_init_file(25 lines)                               |
 **   ------------------------------------------------------------
 **           __n__n__  /
 **    .------`-\00/-'/
@@ -82,6 +84,7 @@ static t_map	*ft_init_file_2(t_a *a, char *line)
 	{
 		new_map->m[i] = ft_atoi(tab[i]);
 		new_map->color[i] = ft_set_color(a, tab[i]);
+		free(tab[i]);
 		if (new_map->m[i] > a->max_z)
 			a->max_z = new_map->m[i];
 	}
