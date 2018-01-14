@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 15:04:34 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/09 17:04:02 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/14 15:20:35 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int			ft_atoi_base(char *s, char *base)
 	if (i == 0)
 		return (0);
 	c = *(s + i);
-	res = ft_base_to_int((((*(s + i) = '\0')) ? s : s), base);
+	res = ft_base_to_int((((*(s + i) *= 0)) ? s : s), base);
 	*(s + i) = c;
 	return (res);
 }

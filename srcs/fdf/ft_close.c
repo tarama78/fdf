@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/12 10:11:38 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/12 10:11:38 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/14 15:34:51 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void		ft_del_map(t_a *a)
 		a->map = NULL;
 	}
 }
+
 void		ft_close(t_a *a)
 {
 	mlx_destroy_image(a->mlx, a->img.img);

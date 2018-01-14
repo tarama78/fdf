@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 16:29:15 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/11 16:10:36 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/14 16:27:11 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void		ft_init_a(t_a *a, char **arg, int nb_arg);
 void		ft_check_error(t_a *a);
 void		ft_check_error_line(char *line);
 void		ft_init_file(t_a *a, char *file);
-void		ft_set_cte(t_a *a);
+int			ft_set_cte(t_a *a);
 
 t_coord		ft_set_coord(int x1, int y1, int x2, int y2);
 t_coord		ft_set_coord_color(long long xy1, int c1, long long xy2, int c2);

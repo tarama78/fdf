@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/11 16:10:36 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/14 15:19:12 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,7 +117,8 @@ fclean: clean
 	@rm -f $(NAME)
 	$(END)
 
-re: fclean all
+re: fclean
+	@make
 
 exec:
 	@clear
@@ -137,7 +138,8 @@ open:
 	@vim +Line $(SRCS) $(HFILES) Makefile
 
 norm:
-	@printf $(BLUE)"NORME LIBFT\n--------------------\n"$(NORMAL)
+	@make -C $(LIBFT_DIR) norm
+	@printf $(BLUE)"NORME FDF\n--------------------\n"$(NORMAL)
 	@norminette $(SRCS) $(HFILES)
 	@printf $(BLUE)"--------------------\n"$(NORMAL)
 
