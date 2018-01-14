@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:38:12 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/14 16:50:45 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/14 18:22:36 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ typedef struct				s_coord
 	int						c2;
 }							t_coord;
 
-typedef struct 				s_rgb
+typedef struct				s_rgb
 {
 	unsigned int			b : 8;
 	unsigned int			g : 8;
