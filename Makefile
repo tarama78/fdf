@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/15 10:33:25 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/15 10:41:10 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,14 +124,14 @@ exec:
 	@clear
 	@make all
 	@printf $(MAGENTA)"EXEC FDF\n--------------------\n"$(NORMAL)
-	@./fdf maps/42.fdf
+	@./fdf maps/pyramide.fdf
 	@printf $(MAGENTA)"--------------------\n"$(NORMAL)
 
 reexec:
 	@clear
 	@make re
 	@printf $(MAGENTA)"EXEC FDF\n--------------------\n"$(NORMAL)
-	@./fdf maps/42.fdf
+	@./fdf maps/pyramide.fdf
 	@printf $(MAGENTA)"--------------------\n"$(NORMAL)
 
 open:
