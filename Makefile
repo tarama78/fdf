@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/14 15:19:12 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/15 10:33:25 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ HFILES = includes/fdf.h \
 		 includes/fdf_struct.h
 
 CC = gcc
-CFLAGS = -Wall -Wextra -g ###############################################-Werror
+CFLAGS = -Wall -Wextra -Werror
 
 INC_DIR = includes/ \
 		  $(LIBFT_DIR)includes/ \
