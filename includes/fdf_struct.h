@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 19:38:12 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/14 18:22:36 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/15 10:30:34 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define ERROR 1
 
 typedef unsigned int		t_ui;
-typedef long long			t_ll;
 typedef unsigned long long	t_ull;
+typedef long long			t_ll;
 
 typedef struct				s_img
 {
