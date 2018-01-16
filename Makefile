@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/15 18:37:51 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/16 14:19:36 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ INC_DIR = includes/ \
 SRCS_DIR = srcs/
 OBJ_DIR = objs/
 
-MAP = maps/pyramide.fdf
+ARG = maps/pyramide.fdf
 
 LIBFT_DIR = libft/
 LIBFT_LIB = -L $(LIBFT_DIR) -lft
@@ -125,14 +125,14 @@ exec:
 	@clear
 	@make all
 	@printf $(MAGENTA)"EXEC FDF\n--------------------\n"$(NORMAL)
-	@./fdf $(MAP)
+	@./fdf $(ARG)
 	@printf $(MAGENTA)"--------------------\n"$(NORMAL)
 
 reexec:
 	@clear
 	@make re
 	@printf $(MAGENTA)"EXEC FDF\n--------------------\n"$(NORMAL)
-	@./fdf $(MAP)
+	@./fdf $(ARG)
 	@printf $(MAGENTA)"--------------------\n"$(NORMAL)
 
 open:
