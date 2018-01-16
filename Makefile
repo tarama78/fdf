@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/15 11:06:47 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/15 18:37:51 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,8 @@ INC_DIR = includes/ \
 SRCS_DIR = srcs/
 OBJ_DIR = objs/
 
+MAP = maps/pyramide.fdf
+
 LIBFT_DIR = libft/
 LIBFT_LIB = -L $(LIBFT_DIR) -lft
 LIBX_DIR = minilibx_macos/
@@ -89,7 +91,6 @@ $(NAME): $(OBJ_DIR) $(OBJ) $(LIBFT_DIR)libft.a $(LIBX_DIR)libmlx.a
 	@$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LIBFT_LIB) $(LIBX_LIB)
 
 $(OBJ_DIR)%.o: $(SRCS_DIR)%.c $(HFILES) $(OBJ_DIR) $(LIBFT_DIR)libft.a $(LIBX_DIR)libmlx.a
-
 	@printf $(YELLOW)"-> $<\n"$(NORMAL)
 	@$(CC) -c $(INC) $< -o $@ $(CFLAGS)
 
@@ -124,14 +125,14 @@ exec:
 	@clear
 	@make all
 	@printf $(MAGENTA)"EXEC FDF\n--------------------\n"$(NORMAL)
-	@./fdf maps/pyramide.fdf
+	@./fdf $(MAP)
 	@printf $(MAGENTA)"--------------------\n"$(NORMAL)
 
 reexec:
 	@clear
 	@make re
 	@printf $(MAGENTA)"EXEC FDF\n--------------------\n"$(NORMAL)
-	@./fdf maps/pyramide.fdf
+	@./fdf $(MAP)
 	@printf $(MAGENTA)"--------------------\n"$(NORMAL)
 
 open:
