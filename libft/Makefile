@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/10 15:40:17 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/15 11:47:22 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -208,7 +208,8 @@ fclean: clean
 	@rm -f $(NAME)
 	$(END)
 
-re: fclean all
+re: fclean
+	@make
 
 open:
 	@vim +Line $(SRCS) $(HFILES) Makefile

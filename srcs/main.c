@@ -6,14 +6,14 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/07 12:01:38 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/11 16:10:35 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/15 18:36:23 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /*
 **   ____________________________________________________________
 **   | main.c                                                   |
-**   |     main(18 lines)                                       |
+**   |     main(20 lines)                                       |
 **   ------------------------------------------------------------
 **           __n__n__  /
 **    .------`-\00/-'/
@@ -39,10 +39,12 @@ int			main(int ac, char **av)
 		mlx_loop(a.mlx);
 	}
 	else
+	{
 		ft_printf("usage: fdf map [width=%d] [height=%d] [z=%d]\n"
 				"\tmove with <up> <down> <right> <left>\n"
 				"\tzoom with <+> and <->\n\tchange projection with <space>\n"
 				"\tchange z size with <a> and <x>\n",
 				WIDTH, HEIGHT, MULT_CTE);
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/11 16:10:36 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/16 14:19:36 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ HFILES = includes/fdf.h \
 		 includes/fdf_struct.h
 
 CC = gcc
-CFLAGS = -Wall -Wextra -g ###############################################-Werror
+CFLAGS = -Wall -Wextra -Werror
 
 INC_DIR = includes/ \
 		  $(LIBFT_DIR)includes/ \
@@ -52,6 +52,8 @@ INC_DIR = includes/ \
 		  minilibx_macos/
 SRCS_DIR = srcs/
 OBJ_DIR = objs/
+
+ARG = maps/pyramide.fdf
 
 LIBFT_DIR = libft/
 LIBFT_LIB = -L $(LIBFT_DIR) -lft
@@ -89,7 +91,6 @@ $(NAME): $(OBJ_DIR) $(OBJ) $(LIBFT_DIR)libft.a $(LIBX_DIR)libmlx.a
 	@$(CC) -o $(NAME) $(OBJ) $(CFLAGS) $(LIBFT_LIB) $(LIBX_LIB)
 
 $(OBJ_DIR)%.o: $(SRCS_DIR)%.c $(HFILES) $(OBJ_DIR) $(LIBFT_DIR)libft.a $(LIBX_DIR)libmlx.a
-
 	@printf $(YELLOW)"-> $<\n"$(NORMAL)
 	@$(CC) -c $(INC) $< -o $@ $(CFLAGS)
 
@@ -117,27 +118,29 @@ fclean: clean
 	@rm -f $(NAME)
 	$(END)
 
-re: fclean all
+re: fclean
+	@make
 
 exec:
 	@clear
 	@make all
 	@printf $(MAGENTA)"EXEC FDF\n--------------------\n"$(NORMAL)
-	@./fdf maps/42.fdf
+	@./fdf $(ARG)
 	@printf $(MAGENTA)"--------------------\n"$(NORMAL)
 
 reexec:
 	@clear
 	@make re
 	@printf $(MAGENTA)"EXEC FDF\n--------------------\n"$(NORMAL)
-	@./fdf maps/42.fdf
+	@./fdf $(ARG)
 	@printf $(MAGENTA)"--------------------\n"$(NORMAL)
 
 open:
 	@vim +Line $(SRCS) $(HFILES) Makefile
 
 norm:
-	@printf $(BLUE)"NORME LIBFT\n--------------------\n"$(NORMAL)
+	@make -C $(LIBFT_DIR) norm
+	@printf $(BLUE)"NORME FDF\n--------------------\n"$(NORMAL)
 	@norminette $(SRCS) $(HFILES)
 	@printf $(BLUE)"--------------------\n"$(NORMAL)
 

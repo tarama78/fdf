@@ -53,3 +53,4 @@ dkms.conf
 
 *.swp
 *.vim
+*.DS_Store

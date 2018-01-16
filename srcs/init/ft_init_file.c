@@ -6,7 +6,7 @@
 /*   By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/11 12:20:33 by tnicolas          #+#    #+#             */
-/*   Updated: 2018/01/12 11:00:53 by tnicolas         ###   ########.fr       */
+/*   Updated: 2018/01/15 11:06:49 by tnicolas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 **   | ft_init_file.c                                           |
 **   |     ft_add_last(15 lines)                                |
 **   |     ft_set_color(9 lines)                                |
-**   |     ft_init_file_2(26 lines)                             |
-**   |         MEUUUU too many lines                            |
+**   |     ft_init_file_2(25 lines)                             |
 **   |     ft_set_max_z(13 lines)                               |
 **   |     ft_init_file(25 lines)                               |
 **   ------------------------------------------------------------
@@ -78,8 +77,7 @@ static t_map	*ft_init_file_2(t_a *a, char *line)
 		ft_error(__FILE__, (char*)__func__, __LINE__, NULL);
 	if (!(new_map->color = malloc(sizeof(new_map->color) * i)))
 		ft_error(__FILE__, (char*)__func__, __LINE__, NULL);
-	new_map->w = i;
-	i = -1;
+	i -= (new_map->w = i) ? i + 1 : i + 1;
 	while (++i < new_map->w)
 	{
 		new_map->m[i] = ft_atoi(tab[i]);
