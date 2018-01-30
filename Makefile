@@ -6,7 +6,7 @@
 #    By: tnicolas <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:45:36 by tnicolas          #+#    #+#              #
-#    Updated: 2018/01/22 18:03:41 by tnicolas         ###   ########.fr        #
+#    Updated: 2018/01/30 19:29:05 by tnicolas         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -110,9 +110,6 @@ clean:
 
 fclean: clean
 	@make -C $(LIBFT_DIR) cleanlib
-	@printf $(GREEN)"MINILIBX\n--------------------\n"$(YELLOW)
-	@make -C $(LIBX_DIR) clean
-	@printf $(GREEN)"\n--------------------\n"$(NORMAL)
 	$(START)
 	@printf $(RED)"-x remove $(NAME)\n"$(NORMAL)
 	@rm -f $(NAME)
