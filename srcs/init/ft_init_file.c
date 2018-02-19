@@ -130,6 +130,8 @@ void			ft_init_file(t_a *a, char *file)
 	}
 	if (ret_gnl == GNL_ERROR)
 		ft_error(__FILE__, (char*)__func__, __LINE__, NULL);
+	if (a->map_h == 0)
+		ft_error(__FILE__, (char*)__func__, __LINE__, "Empty file");
 	ft_check_error(a);
 	ft_set_max_z(a);
 	ft_set_cte(a);
